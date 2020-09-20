@@ -8,6 +8,7 @@
     - 특히 인터넷에 연결된 시스템끼리 데이터를 쉽게 주고 받을 수 있게 하여 HTML의 한계를 극복할 목적으로 만들어졌다.
 
     ### Example
+    ![Untitled 10](https://user-images.githubusercontent.com/67780144/93719156-b73e7000-fbbb-11ea-9c07-570059e4ebe0.png)
 
     ![Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%2010.png](Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%2010.png)
 
@@ -31,11 +32,11 @@
 
         → JavaEE 스펙에 정의된 표준 보안 정책 구문으로 표현된 카탈리나 자바 클래스의 톰캣 보안 정책이다. 톰캣의 코어 보안 정책, 시스템 코드, 웹앱, 카탈리나 자체의 퍼미션이 정의되어 있다.
 
-    - [catalina.properties](http://catalina.properties)
+    - catalina.properties
 
         → 카탈리나 클래스를 위한 표준 자바 property이다. 보안 패키지 리스트, 클래스 로더 패스 등과 같은 정보이다. 톰캣의 성능 최적화를 위한 String 캐시 설정이 포함된다.
 
-    - [logging.properties](http://logging.properties)
+    - logging.properties
 
         → 임계값, 로그값의 위치와 같은 카탈리나의 로깅 기능을 구성하는 방법이다.
 
