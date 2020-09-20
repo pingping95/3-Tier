@@ -78,8 +78,7 @@ yum -y install gcc gcc-c++
 그 외, workers.properties, uriworkermap.properties, Apache HTTP Server, AJPv13, LoadBalancing, Reverse Proxy 등에 대한 레퍼런스를 볼 수 있다.
 
 - tar.gz 파일의 링크 주소를 복사
-
-![Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled.png](Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/67780144/93719317-aa6e4c00-fbbc-11ea-9dbc-0116ff7542c6.png)
 
 ```bash
 >>>> wget이 없다면 설치 
@@ -109,9 +108,10 @@ vim httpd.conf → :se nu 후에 들어가서 대략 95번째 라인의 ServerNa
 
 위에는 주석에 설명이 잘 되어있다.
 
-![Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%201.png](Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%201.png)
+![Untitled 1](https://user-images.githubusercontent.com/67780144/93719335-dc7fae00-fbbc-11ea-85e1-c527500758d3.png)
 
-- conf.d 디렉터리에 mod_jk.conf, uriworkermap.properties, [workers.properties](http://workers.properties) 3가지 파일을 추가시켜준다.
+
+- conf.d 디렉터리에 mod_jk.conf, uriworkermap.properties, workers.properties 3가지 파일을 추가시켜준다.
 
 ```bash
 [root@web httpd]# tree
@@ -159,7 +159,7 @@ JKLogStampFormat "[%a %b %d %H:%M:%s %Y]"
 JKRequestLogFormat "%w %V %T"
 ```
 
-- [workers.properties](http://workers.properties) 생성 후 설정
+- workers.properties 생성 후 설정
 
 ```bash
 # vim workers.properties
@@ -171,7 +171,7 @@ worker.worker1.host=192.168.202.11
 worker.worker1.port=8009
 ```
 
-- [uriworkermap.properties](http://uriworkermap.properties) 생성 후 설정
+- uriworkermap.properties 생성 후 설정
 
 mod_jk.conf에서 uriworkermap의 설정파일은 conf.d 디렉터리 내에 있다고 설정했다.
 
@@ -185,7 +185,8 @@ mod_jk.conf에서 uriworkermap의 설정파일은 conf.d 디렉터리 내에 있
 
     맨 아래에 다음과 같은 내용 추가
 
-    ![Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%202.png](Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%202.png)
+![Untitled 2](https://user-images.githubusercontent.com/67780144/93719373-1a7cd200-fbbd-11ea-8be4-d96937d2c17b.png)
+
 
     uriworkermap.properties에서 /* (모든 파일)을 worker을 통해 tomcat에 전달하라고 설정을 해주었는데
 
@@ -217,7 +218,8 @@ cat index.html
 test
 ```
 
-![Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%203.png](Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%203.png)
+![Untitled 3](https://user-images.githubusercontent.com/67780144/93719388-35e7dd00-fbbd-11ea-93d6-76af26bb1e82.png)
+
 
 - 위의 출력물을 통해 html 확장자를 가진 파일은 web server단에서 처리
 
@@ -306,8 +308,9 @@ systemctl enable tomcat
     vim /etc/tomcat/server.xml
 
     address, secretRequired, URIEncoding 추가
+    
+![Untitled 4](https://user-images.githubusercontent.com/67780144/93719396-41d39f00-fbbd-11ea-9b0f-fbb1c16c8ece.png)
 
-![Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%204.png](Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%204.png)
 
 ```bash
 <!-- Define an AJP 1.3 Connector on port 8009 -->
@@ -333,7 +336,7 @@ systemctl restart tomcat && systemctl enable tomcat
 
 - Apache → Tomcat
 
-![Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%205.png](Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%205.png)
+![Untitled 5](https://user-images.githubusercontent.com/67780144/93719408-4d26ca80-fbbd-11ea-9c7a-978e23646545.png)
 
 → Apache의 IP:80 을 통해 톰캣 서버로 접속된것을 확인할 수 있다.
 
@@ -482,7 +485,7 @@ cp mysql-connector-java-5.1.48-bin.jar /usr/share/tomcat7/lib/
 
 → context 내부에 추가해준다.
 
-![Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%206.png](Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%206.png)
+![Untitled 6](https://user-images.githubusercontent.com/67780144/93719416-5a43b980-fbbd-11ea-8db4-823d9ef55e3d.png)
 
 ```bash
 <Resource       name="jdbc/dbmy"
@@ -515,7 +518,7 @@ cp mysql-connector-java-5.1.48-bin.jar /usr/share/tomcat7/lib/
 
 → context에 적어준 resource명을 가져옴으로써 사용한다.
 
-![Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%207.png](Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%207.png)
+![Untitled 7](https://user-images.githubusercontent.com/67780144/93719422-629bf480-fbbd-11ea-8d8d-eb3f094a16fb.png)
 
 ```bash
 <resource-ref>
@@ -528,7 +531,8 @@ cp mysql-connector-java-5.1.48-bin.jar /usr/share/tomcat7/lib/
 
 5. DB 연동 테스트를 위한 mariadb_test.jsp 파일을 생성
 
-![Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%208.png](Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%208.png)
+![Untitled 8](https://user-images.githubusercontent.com/67780144/93719426-69c30280-fbbd-11ea-9213-07be26f82f40.png)
+
 
 ```bash
 cd /var/lib/tomcat7/webapps/ROOT
@@ -571,7 +575,7 @@ cd /var/lib/tomcat7/webapps/ROOT
 
 - Test ⇒ apache server_ip/mariadb_test.jsp
 
-![Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%209.png](Apache+Tomcat+MariaDB%20c9e97d58812e4bd699ae33209e566a94/Untitled%209.png)
+![Untitled 9](https://user-images.githubusercontent.com/67780144/93719433-73e50100-fbbd-11ea-92ff-6d9d09eb35d7.png)
 
 ### Apache → Tomcat → MariaDB
 
