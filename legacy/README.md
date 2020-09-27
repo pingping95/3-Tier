@@ -1,5 +1,3 @@
-# Architecture
-
 # 실습 목적
 
 - 서로 다른 VM 호스트 간에 Web - WAS - Database 3-Tier 구현
