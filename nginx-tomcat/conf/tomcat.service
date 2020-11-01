@@ -1,0 +1,14 @@
+[Unit]
+Description=tomcat8 
+After=syslog.target
+
+[Service]
+Type=forking
+User=tomcat
+Group=tomcat
+ExecStart=/opt/tomcat8/bin/startup.sh
+ExecStop=/opt/tomcat8/bin/shutdown.sh
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
